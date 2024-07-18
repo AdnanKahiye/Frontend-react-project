@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope,faHouseFlag,faLaptop,faFacebook} from '@fortawesome/free-solid-svg-icons'
 import { Route,Routes ,Router,useNavigate } from 'react-router-dom';
+import React from 'react';
+
 import './App.css';
 import Navbar from './Components/Navbar';
 import About from './Pages/About';
 import ContactUs from './Pages/ContactUs';
-import Home from './Pages/Home';
 import Sign from './Pages/Sign'
 import SignUp from './Pages/SignUp'
 import Blog from './Pages/Blog';
@@ -17,6 +18,7 @@ import Category from './Components/Category';
 import RequireAuth from './Components/RequireAuth';
 import { AuthProvider } from './context/AuthContext';
 import AddBook from './Components/AddBook';
+const lazyHome =React.lazy(()=> import('./Pages/Home'))
 
 function App() {
 
@@ -25,7 +27,7 @@ function App() {
        
       <Navbar/>
        <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<React.Suspense fallback ="loading.."> <lazyHome/></React.Suspense> }/>
         <Route path='/About' element={<About/>}/>
         <Route path='/ContactUs' element={<ContactUs/>}/>
         <Route path='/Blog' element ={<Blog/>}/>
