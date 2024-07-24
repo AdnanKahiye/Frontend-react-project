@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope,faHouseFlag,faLaptop,faFacebook} from '@fortawesome/free-solid-svg-icons'
 import { Route,Routes ,Router,useNavigate } from 'react-router-dom';
 import React from 'react';
@@ -18,8 +17,7 @@ import Category from './Components/Category';
 import RequireAuth from './Components/RequireAuth';
 import { AuthProvider } from './context/AuthContext';
 import AddBook from './Components/AddBook';
-const lazyHome =React.lazy(()=> import('./Pages/Home'))
-
+import Home from './Pages/Home';
 function App() {
 
   return (
@@ -27,7 +25,7 @@ function App() {
        
       <Navbar/>
        <Routes>
-        <Route path='/' element={<React.Suspense fallback ="loading.."> <lazyHome/></React.Suspense> }/>
+        <Route path='/' element={ <Home/> }/>
         <Route path='/About' element={<About/>}/>
         <Route path='/ContactUs' element={<ContactUs/>}/>
         <Route path='/Blog' element ={<Blog/>}/>
